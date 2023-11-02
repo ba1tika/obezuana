@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{breakfast}">breakfast</a>
+    <a th:href="@{bron}">bron</a>
+    <a th:href="@{clients}">clients</a>
+    <a th:href="@{employee}">employee</a>
+    <a th:href="@{number}">number</a>
+    <a th:href="@{numbercategoy}">numbercategoy</a>
+    <a th:href="@{numbersos}">numbersos</a>
+    <a th:href="@{post}">post</a>
+    <div class="animation start-home"></div>
+</nav>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>id</h1></th>
+        <th><h1>firstname</h1></th>
+        <th><h1>lastname</h1></th>
+        <th><h1>middlename</h1></th>
+        <th><h1>sex</h1></th>
+        <th><h1>passport</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    <form  th:action="@{clients/new}" method="post">
+        <tr>
+            <td>-1</td>
+            <td><input type="text" name="firstname"></td>
+            <td><input type="text" name="lastname"></td>
+            <td><input type="text" name="middlename"></td>
+            <td><input type="text" name="sex"></td>
+            <td><input type="text" name="passport"></td>
+            <td><button type="submit">Добавить</button></form></td>
+    <td></td>
+    </tr>
+    </form>
+    <tr th:each="clients :${clients}">
+        <td th:text="${clients.idClients}"></td>
+        <td><form th:action="@{clients/update}" method="post"><input type="text" name="firstname" th:value="${clients.firstname}"></form></td>
+        <td><input type="text" name="lastname" th:value="${clients.lastname}"></td>
+        <td><input type="text" name="middlename" th:value="${clients.middlename}"></td>
+        <td><input type="text" name="sex" th:value="${clients.sex}"></td>
+        <td><input type="text" name="passport" th:value="${clients.passport}"></td>
+        <td><button type="submit" name="idClients" th:value="${clients.idClients}">Изменить</button></form></td>
+        <td><form th:action="@{clients/delete}" method="post"><button type="submit" name="idClients" th:value="${clients.idClients}" th:if="${clients.idClients!=0}">Удалить</button></form></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breakfast</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{breakfast}">breakfast</a>
+    <a th:href="@{bron}">bron</a>
+    <a th:href="@{clients}">clients</a>
+    <a th:href="@{employee}">employee</a>
+    <a th:href="@{number}">number</a>
+    <a th:href="@{numbercategoy}">numbercategoy</a>
+    <a th:href="@{numbersos}">numbersos</a>
+    <a th:href="@{post}">post</a>
+    <div class="animation start-home"></div>
+</nav>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>id</h1></th>
+        <th><h1>kolvo</h1></th>
+        <th><h1>zakaz</h1></th>
+        <th><h1>price</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    <form  th:action="@{breakfast/new}" method="post">
+        <tr>
+            <td>-1</td>
+            <td><input type="text" name="kolvo"></td>
+            <td><input type="text" name="zakaz"></td>
+            <td><input type="text" name="price"></td>
+            <td><button type="submit">Добавить</button></form></td>
+    <td></td>
+    </tr>
+    </form>
+    <tr th:each="breakfast :${breakfast}">
+        <td th:text="${breakfast.id}"></td>
+        <td><form th:action="@{breakfast/update}" method="post"><input type="text" name="post" th:value="${breakfast.title}"></form></td>
+        <td><input type="text" name="kolvoo" th:value="${breakfast.kolvo}"></td>
+        <td><input type="text" name="zakazz" th:value="${breakfast.zakaz}"></td>
+        <td><input type="text" name="pricee" th:value="${breakfast.price}"></td>
+        <td><button type="submit" name="id" th:value="${breakfast.id}">Изменить</button></form></td>
+        <td><form th:action="@{breakfast/delete}" method="post"><button type="submit" name="id" th:value="${breakfast.id}" th:if="${breakfast.id!=0}">Удалить</button></form></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

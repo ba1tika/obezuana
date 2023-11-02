@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Niumber Sos</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{breakfast}">breakfast</a>
+    <a th:href="@{bron}">bron</a>
+    <a th:href="@{clients}">clients</a>
+    <a th:href="@{employee}">employee</a>
+    <a th:href="@{number}">number</a>
+    <a th:href="@{numbercategoy}">numbercategoy</a>
+    <a th:href="@{numbersos}">numbersos</a>
+    <a th:href="@{post}">post</a>
+    <div class="animation start-home"></div>
+</nav>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>id</h1></th>
+        <th><h1>bron</h1></th>
+        <th><h1>zaezd</h1></th>
+        <th><h1>vuezd</h1></th>
+        <th><h1>summa</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    <form  th:action="@{numbersos/new}" method="post">
+        <tr>
+            <td>-1</td>
+            <td><input type="text" name="bron"></td>
+            <td><input type="text" name="kzaezd"></td>
+            <td><input type="text" name="vuezd"></td>
+            <td><input type="text" name="summa"></td>
+            <td><button type="submit">Добавить</button></form></td>
+    <td></td>
+    </tr>
+    </form>
+    <tr th:each="numbersos :${numbersos}">
+        <td th:text="${numbersos.idNumberSos}"></td>
+        <td><form th:action="@{numbersos/update}" method="post"><input type="text" name="bron" th:value="${numbercategory.bron}"></form></td>
+        <td><input type="text" name="zaezd" th:value="${numbercategory.zaezd}"></td>
+        <td><input type="text" name="vuezd" th:value="${numbercategory.vuezd}"></td>
+        <td><input type="text" name="summa" th:value="${numbercategory.summa}"></td>
+        <td><button type="submit" name="idNumberSos" th:value="${numbersos.idNumberSos}">Изменить</button></form></td>
+        <td><form th:action="@{numbersos/delete}" method="post"><button type="submit" name="idNumberSos" th:value="${numbersos.idNumberSos}" th:if="${numbersos.idNumberSos!=0}">Удалить</button></form></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
